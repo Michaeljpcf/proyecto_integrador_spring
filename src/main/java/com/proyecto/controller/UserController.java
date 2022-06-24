@@ -184,7 +184,7 @@ public class UserController {
 	
 	@PutMapping("/deleteUser/{id}")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> actualizaMarca(@RequestBody User user, @PathVariable("id") Integer id) {
+	public ResponseEntity<Map<String, Object>> deleteUser(@RequestBody User user, @PathVariable("id") Integer id) {
 		
 		User userActual = userService.findById(id).get();
 		User userDeleted = null;

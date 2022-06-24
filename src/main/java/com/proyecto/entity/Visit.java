@@ -31,16 +31,16 @@ public class Visit {
 	
 	private String comments;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")	
 	private Date entryDate;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date estimatedDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date exitDate;
 	
 	private int status;	
@@ -48,6 +48,10 @@ public class Visit {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "visitor_id")
 	private Visitor visitor;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "department_id")
+	private Department department;
 
 	@PrePersist
 	public void prePersist() {

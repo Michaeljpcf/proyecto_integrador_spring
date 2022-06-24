@@ -31,7 +31,7 @@ public class VisitServiceImpl implements VisitService{
 	}
 
 	@Override
-	public Visitor createVisit(Visitor obj) {
+	public Visitor createVisitor(Visitor obj) {
 		return repository.save(obj);
 	}
 
@@ -82,6 +82,11 @@ public class VisitServiceImpl implements VisitService{
 	@Override
 	public List<Visit> listVisit() {
 		return visitRepository.findAll();
+	}
+
+	@Override
+	public Visit createVisit(Visit obj) {
+		return visitRepository.save(obj);
 	}
 
 }

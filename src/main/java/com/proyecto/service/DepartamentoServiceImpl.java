@@ -38,6 +38,16 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	public boolean existsByNumber(Integer number) {
 		return repositorio.existsByNumber(number);
 	}
+
+	@Override
+	public Department update(Department department) {
+		return repositorio.save(department);
+	}
+
+	@Override
+	public Optional<Department> getByNumber(Integer numberDepartment) {
+		return repositorio.findByNumber(numberDepartment);
+	}
 	
 	
 

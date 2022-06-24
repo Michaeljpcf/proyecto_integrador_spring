@@ -12,7 +12,7 @@ public interface VisitService {
 	
 	public abstract Visitor insertaActualizaVisita(Visitor obj);
 	
-	public Visitor createVisit(Visitor obj);
+	public Visitor createVisitor(Visitor obj);
 	
 	public Optional<Visitor> findById(Integer id);	
 	
@@ -27,9 +27,12 @@ public interface VisitService {
 	public List<Visitor> findVisitorByDni(String dni);
 	
 	
+	
+	public Visit createVisit(Visit obj);
+	
 	public Optional<Visit> findByIdVisit(Integer id);
 	
 	public Visit update(Visit obj);	
 	
-	public abstract List<Visit> listVisit();
+	public List<Visit> listVisit();
 }

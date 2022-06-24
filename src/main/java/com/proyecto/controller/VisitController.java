@@ -84,7 +84,28 @@ public class VisitController {
 		
 		try {
 			
-			Visitor objSalida = visitService.createVisit(obj);
+			Visitor objSalida = visitService.createVisitor(obj);
+			if (objSalida == null) {
+				response.put("mensaje", AppSettings.MENSAJE_REG_ERROR);
+			} else {
+				response.put("mensaje", AppSettings.MENSAJE_REG_EXITOSO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("mensaje", AppSettings.MENSAJE_REG_ERROR);
+		}
+		return ResponseEntity.ok(response);
+	}
+	
+	@PostMapping("/createVisit")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> createVisit(@Valid @RequestBody Visit obj) {
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			
+			Visit objSalida = visitService.createVisit(obj);
+			
 			if (objSalida == null) {
 				response.put("mensaje", AppSettings.MENSAJE_REG_ERROR);
 			} else {
@@ -99,7 +120,7 @@ public class VisitController {
 	
 	@PutMapping("/changeStatus/{id}")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> actualizaMarca(@RequestBody Visit visit, @PathVariable("id") Integer id) {
+	public ResponseEntity<Map<String, Object>> updateStatusComment(@RequestBody Visit visit, @PathVariable("id") Integer id) {
 		
 		Visit visitCurrent = visitService.findByIdVisit(id).get();
 		Visit changeStatus = null;
