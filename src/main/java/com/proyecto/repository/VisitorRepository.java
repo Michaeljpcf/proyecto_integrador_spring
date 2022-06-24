@@ -18,7 +18,7 @@ public interface VisitorRepository extends JpaRepository<Visitor, Integer>{
 	
 //	@Query("select v from visitors v where v.dni like :filtro")
 //	public List<Visitor> findByDni(@Param("filtro") String dni);
-	
-	public List<Visitor> findByDniContaining(@Param("dni") String dni);
+
+	List<Visitor> findByDniContaining(@Param("dni") String dni);
 	
 }
