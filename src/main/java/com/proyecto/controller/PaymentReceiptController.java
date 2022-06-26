@@ -36,14 +36,14 @@ public class PaymentReceiptController {
 		
 		Map<String, Object> response = new HashMap<>();
 		
-		try {		
-			
-			PaymentReceipt receipt = new PaymentReceipt();
-			
-			Date date = paymentReceipt.getPaymentDate();
-										
+		try {
+
+
+
 			for (int i = 0; i < 12; i++) {
-				
+				Date date = paymentReceipt.getPaymentDate();
+				PaymentReceipt receipt = new PaymentReceipt();
+
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(date);
 				cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
@@ -64,8 +64,9 @@ public class PaymentReceiptController {
 				receipt.setTypeService(paymentReceipt.getTypeService());
 				receipt.setTower(paymentReceipt.getTower());
 				receipt.setUser(paymentReceipt.getUser());
-				
-				paymentReceiptService.createPaymentReceipt(receipt);
+				System.out.println("Valor de i " + i);
+				PaymentReceipt responseService = paymentReceiptService.createPaymentReceipt(receipt);
+				System.out.println("Response del Service >>> " + responseService);
 			}
 			
 			
